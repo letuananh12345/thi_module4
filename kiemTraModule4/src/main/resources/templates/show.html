@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Danh Sách Thành Phố</h2>
+  <a class="m-0 float-right btn btn-success btn-sm" th:href="@{/create}">Thêm Thành Phố<i
+          class="fas fa-chevron-right"></i></a>
+  <form >
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Thành Phố</th>
+      <th>Quốc Gia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="city,loop:${listCity}">
+      <td th:text="${loop.index +1}"></td>
+      <td ><a th:text="${city.nameCity}" th:href="@{/view/{id}(id=${city.id})}"></a></td>
+      <td th:text="${city.country.getName()}"></td>
+      <td><a th:href="@{/edit/{id}(id=${city.id})}">Chỉnh Sửa</a></td>
+      <td><a th:href="@{/delete/{id}(id=${city.id})}">Xóa</a></td>
+
+    </tr>
+    </tbody>
+  </table>
+  </form>
+</div>
+
+</body>
+</html>

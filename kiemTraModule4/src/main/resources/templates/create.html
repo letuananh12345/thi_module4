@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Thêm Thành Phố</h2>
+    <form method="post">
+        <table class="table">
+            <tbody>
+            <thead th:object="${city}">
+
+
+            <tr><input th:field="*{id}" hidden></tr>
+            <br>
+
+            <tr>Tên &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp</tr>
+            <tr><input th:field="*{nameCity}">
+                <tr style="color: red" th:if="${#fields.hasErrors('nameCity')}" th:errors="*{nameCity}"></tr>
+            </tr>
+            <br>
+
+            <tr>Quốc Gia &nbsp&nbsp</tr>
+            <tr>
+                <select th:field="*{country}">
+                    <option th:each="cnt:${countrysss}" th:text="${cnt.name}" th:value="${cnt.id}"></option>
+                </select>
+            </tr>
+            <br>
+
+            <tr>Diện Tích &nbsp&nbsp</tr>
+            <tr><input th:field="*{area}" type="">
+                <tr style="color: red" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></tr>
+            </tr>
+            <br>
+            <tr>Dân Số &nbsp &nbsp&nbsp&nbsp</tr>
+            <tr><input th:field="*{population}" type="">
+                <tr style="color: red" th:if="${#fields.hasErrors('population')}" th:errors="*{population}"></tr>
+            </tr>
+            <br>
+            <tr>GDP &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp</tr>
+            <tr><input th:field="*{gdp}" type="">
+                <tr style="color: red" th:if="${#fields.hasErrors('gdp')}" th:errors="*{gdp}"></tr>
+            </tr>
+            <br>
+            <tr>Giới Thiệu&nbsp</tr>
+            <tr><input th:field="*{describeTheCity}">
+                <tr style="color: red" th:if="${#fields.hasErrors('describeTheCity')}" th:errors="*{describeTheCity}"></tr>
+            </tr>
+
+
+            </thead>
+            </tbody>
+        </table>
+        <tr>
+            <td>
+                <button type="submit" class="btn btn-default">Nhập Thành Phố</button>
+            </td>
+            <td><button><a th:href="@{/show}">Thoát</a></button></td>
+        </tr>
+    </form>
+</div>
+
+</body>
+</html>

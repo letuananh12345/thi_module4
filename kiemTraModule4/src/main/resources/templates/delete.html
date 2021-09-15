@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<table style="text-align: center">
+
+
+<h1><b>Xóa Thành Phố</b></h1>
+    <body>
+<br>
+
+<h1>Bạn có chắc chắn muốn xóa thành phố này không  ?</h1>
+<br>
+<form  method="post">
+    <input hidden th:value="${city.id}">
+    <button type="submit" class="btn btn-danger">Xóa</button>
+</form>
+<a th:href="@{/show}" type="button"><button>Thoát</button></a>
+</body>
+</table>
+</html>

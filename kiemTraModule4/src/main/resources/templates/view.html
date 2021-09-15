@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Chi Tiết Thành Phố</h2>
+    <a class="m-0 float-right btn btn-success btn-sm" th:href="@{/show}">Xem danh sách Thành Phố<i
+            class="fas fa-chevron-right"></i></a>
+    <form >
+        <table class="table">
+            <tbody>
+            <thead th:object="${city}">
+
+
+            <tr><input th:field="*{id}" hidden></tr>
+            <br>
+
+            <tr>Tên : &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp&nbsp</tr>
+            <tr th:text="*{nameCity}" ></tr>
+            <br>
+
+            <tr>Quốc Gia : &nbsp&nbsp</tr>
+            <tr th:text="${city.country.getName()}" ></tr>
+            <br>
+
+            <tr>Diện Tích : &nbsp&nbsp</tr>
+            <tr th:text="*{area}" ></tr>
+            <br>
+            <tr>Dân Số : &nbsp &nbsp&nbsp&nbsp</tr>
+            <tr th:text="*{population}"></tr>
+            <br>
+            <tr>GDP : &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp</tr>
+            <tr th:text="*{gdp}" ></tr>
+            <br>
+            <tr>Giới Thiệu :&nbsp</tr>
+            <tr th:text="*{describeTheCity}" ></tr>
+
+
+            </thead>
+            </tbody>
+        </table>
+
+    </form>
+    <tr>
+        <td>
+            <a th:href="@{/edit/{id}(id=${city.id})}" class="btn btn-default">Chỉnh Sửa</a>
+        </td>
+        <td><button><a th:href="@{/delete/{id}(id=${city.id})}">Xóa</a></button></td>
+    </tr>
+</div>
+
+</body>
+</html>
